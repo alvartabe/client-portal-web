@@ -29,7 +29,8 @@
                           "src/styles/app.css"
                         ],
                         "scripts": [
-                          // "src/scripts/app.js"
+                          "node_modules/jquery/dist/jquery.js",
+                          "src/scripts/app.js"
                         ]
                     },
                     "configurations": {
@@ -97,7 +98,8 @@
                           "src/styles/app.css"
                         ],
                         "scripts": [
-                          // "src/scripts/app.js"
+                          "node_modules/jquery/dist/jquery.js",
+                          "src/scripts/app.js"
                         ]
                     }
                 }
