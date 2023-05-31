@@ -2,15 +2,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { AuthenticationComponent } from './authentication.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginLayoutComponent,
+    path: '',
+    component: AuthenticationComponent,
     children: [
       {
-        path: '',
+        path: 'login',
         component: LoginComponent
       }
     ]
