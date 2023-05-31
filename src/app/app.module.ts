@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LucideAngularModule, File, Home, Menu, UserCheck, ChevronDown, Box } from 'lucide-angular';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
-    LucideAngularModule.pick({File, Home, Menu, UserCheck, ChevronDown, Box})
+    DashboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

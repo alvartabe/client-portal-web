@@ -1,17 +1,16 @@
-// authentication-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { DashboardComponent } from './dashboard.component';
+import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginLayoutComponent,
+    path: 'dashboard',
+    component: DashboardComponent,
     children: [
       {
-        path: '',
-        component: LoginComponent
+        path: 'table',
+        component: TableComponent
       }
     ]
   }
@@ -22,4 +21,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
 })
-export class AuthenticationRoutingModule {}
+export class DashboardRoutingModule {}
