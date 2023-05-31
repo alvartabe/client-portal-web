@@ -1,0 +1,20 @@
+{
+  "logging": {
+    "minimumLevel": "debug"
+  },
+  "userApi": {
+    "url": "localhost"
+  },
+  "authorization": {
+    "authority": "",
+    "configId": "1",
+    "redirectUrl": "",
+    "postLogoutRedirectUri": "",
+    "clientId": "<your clientId>",
+    "scope": "openid profile email offline_access",
+    "responseType": "code",
+    "silentRenew": true,
+    "useRefreshToken": true,
+    "logLevel": 1
+  }
+}
