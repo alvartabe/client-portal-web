@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthHeaderInterceptor } from './core/auth-header.interceptor';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,13 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AuthenticationModule,
     DashboardModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHeaderInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
