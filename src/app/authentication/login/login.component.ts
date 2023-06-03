@@ -1,18 +1,27 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { AppConfig } from 'src/app/core/app-config';
-import { APP_CONFIG } from 'src/app/core/app-config.token';
+import { Component, OnInit } from '@angular/core';
+import { LoginModel } from '../models/login.model';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+    model: LoginModel = {username: '', password: ''}
 
-  constructor(@Inject(APP_CONFIG) private config: AppConfig) { }
+    constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(this.config.userApi.url)
-  }
+    ngOnInit(): void {
+        // console.log(this.config.appApi.url);
+    }
 
+    onSubmit(): void {
+        console.log("submit");
+        this.authenticationService.login(this.model).subscribe((response) => {
+            console.log(response);
+            // this.router.navigate(['/dashboard']);
+        })
+    }
 }
