@@ -10,7 +10,6 @@ export class AuthHeaderInterceptor implements HttpInterceptor {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(this.authService.token)
         if (this.authService.token && request.context.get(REQUIRES_AUTHENTICATION)) {
             // add authorization header with bearer auth token if available
             request = request.clone({
