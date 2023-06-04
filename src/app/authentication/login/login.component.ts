@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
         // console.log(this.config.appApi.url);
     }
 
-    onSubmit(): void {
+    onSubmit() {
         console.log("submit");
         this.authenticationService.login(this.model).subscribe((response) => {
             console.log(response);
