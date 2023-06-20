@@ -33,7 +33,7 @@ export class AuthenticationService {
     public login(login: LoginModel): Observable<TokenModel> {
         return this.authClient.login(login).pipe(
             tap((response) => {
-                this.token = response.access_token;
+                this.token = response.accessToken;
                 localStorage.setItem('jwtToken', this.token);
             })
         );

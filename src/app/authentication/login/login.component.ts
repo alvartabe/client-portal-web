@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-    model: LoginModel = {username: '', password: ''}
+    model: LoginModel = {username: '', password: ''};
 
     constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
@@ -17,11 +17,9 @@ export class LoginComponent implements OnInit {
         // console.log(this.config.appApi.url);
     }
 
-    onSubmit() {
-        console.log("submit");
+    onSubmit(): void {
         this.authenticationService.login(this.model).subscribe((response) => {
-            console.log(response);
             this.router.navigate(['/dashboard']);
-        })
+        });
     }
 }

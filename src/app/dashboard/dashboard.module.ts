@@ -16,6 +16,7 @@ import { DashboardGuard } from './dashboard.guard';
   imports: [
       CommonModule,
       DashboardRoutingModule,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       LucideAngularModule.pick({Home, Menu, UserCheck, ChevronDown, Box})
   ],
   providers: [

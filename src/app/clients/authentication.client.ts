@@ -31,7 +31,6 @@ export class AuthenticationClient {
   }
 
     private handleError(error: HttpErrorResponse): Observable<never> {
-        console.log(error);
         return throwError(() => error.message);
     }
 }

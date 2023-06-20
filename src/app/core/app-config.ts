@@ -9,16 +9,16 @@ export interface AppConfig {
   };
 
   authorization: {
-      authority: string,
-      configId: string,
-      redirectUrl: string,
-      postLogoutRedirectUri: string,
-      clientId: string,
-      scope: string,
-      responseType: string,
-      silentRenew: boolean,
-      useRefreshToken: boolean,
-      logLevel: number
+      authority: string;
+      configId: string;
+      redirectUrl: string;
+      postLogoutRedirectUri: string;
+      clientId: string;
+      scope: string;
+      responseType: string;
+      silentRenew: boolean;
+      useRefreshToken: boolean;
+      logLevel: number;
   };
 }
 

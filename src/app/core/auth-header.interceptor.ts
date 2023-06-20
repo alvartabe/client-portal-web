@@ -1,8 +1,8 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { AuthenticationService } from "../authentication/authentication.service";
-import { REQUIRES_AUTHENTICATION } from "./requires-authentication.token";
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from '../authentication/authentication.service';
+import { REQUIRES_AUTHENTICATION } from './requires-authentication.token';
 
 @Injectable()
 export class AuthHeaderInterceptor implements HttpInterceptor {
