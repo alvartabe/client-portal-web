@@ -1,0 +1,10 @@
+<div class="field-error text-danger mt-2" *ngIf="field?.errors?.required && !customRequired && (validateUntouched || field?.dirty || form?.submitted)">Value required.</div>
+<div class="field-error text-danger mt-2" *ngIf="field?.errors?.required && customRequired && (validateUntouched || field?.dirty || form?.submitted)">{{ customRequired }}</div>
+<div class="field-error text-danger mt-2" *ngIf="field?.errors?.maxlength && (validateUntouched || field?.dirty || form?.submitted)">Max allowed characters is {{ field.errors?.maxlength.requiredLength }}.</div>
+<div class="field-error text-danger mt-2" *ngIf="field?.errors?.minlength && (validateUntouched || field?.dirty || form?.submitted)">Min allowed characters is {{ field.errors?.minlength.requiredLength }}.</div>
+<div class="field-error username-error text-danger mt-2" *ngIf="field?.errors?.username && (validateUntouched || field?.dirty || form?.submitted)">Username is already in use, choose another one.</div>
+<div class="field-error text-danger mt-2" *ngIf="field?.errors?.email && (validateUntouched || field?.dirty || form?.submitted)">Email must be a valid email address.</div>
+<div class="field-error text-danger mt-2" *ngIf="field?.invalid && !field?.errors?.maxlength && !field?.errors?.minlength && !field?.errors?.required && !field?.errors?.email && !field?.errors?.username && customValidations.length === 0 && (validateUntouched || field?.dirty || form?.submitted)">Invalid value.</div>
+<ng-template ngFor let-customValidation [ngForOf]="customValidations">
+    <div class="field-error text-danger mt-2" *ngIf="customValidation.validation(field, customValidation.validateUntouched  || validateUntouched ? true : false, form)">{{ customValidation.message }}</div>
+</ng-template>

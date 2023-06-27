@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ng-submitted .ng-invalid:not(:focus),
+.ng-touched.ng-invalid:not(:focus) {
+    @apply border-red-600;
+}

@@ -1,0 +1,105 @@
+<!-- BEGIN: Mobile Menu -->
+<div class="mobile-menu md:hidden">
+  <div class="mobile-menu-bar">
+      <a href="" class="flex mr-auto">
+          <img alt="Midone - HTML Admin Template" class="w-6" src="../assets/images/logo.png" />
+      </a>
+      <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+  </div>
+  <div class="scrollable">
+      <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+      <ul class="scrollable__content py-2">
+          <li>
+              <a href="javascript:;.html" class="menu menu--active">
+                  <div class="menu__icon"><i data-lucide="home"></i></div>
+                  <div class="menu__title">Dashboard <i data-lucide="chevron-down" class="menu__sub-icon transform rotate-180"></i></div>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="menu">
+                  <div class="menu__icon"><i data-lucide="box"></i></div>
+                  <div class="menu__title">Menu Layout <i data-lucide="chevron-down" class="menu__sub-icon"></i></div>
+              </a>
+              <ul class="">
+                  <li>
+                      <a href="index.html" class="menu menu--active">
+                          <div class="menu__icon"><i data-lucide="activity"></i></div>
+                          <div class="menu__title">Side Menu</div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="simple-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                          <div class="menu__icon"><i data-lucide="activity"></i></div>
+                          <div class="menu__title">Simple Menu</div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                          <div class="menu__icon"><i data-lucide="activity"></i></div>
+                          <div class="menu__title">Top Menu</div>
+                      </a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+</div>
+<!-- END: Mobile Menu -->
+<div class="flex mt-[4.7rem] md:mt-0">
+  <!-- BEGIN: Side Menu -->
+  <nav class="side-nav">
+      <a href="" class="intro-x flex items-center pl-5 pt-4">
+          <img alt="Midone - HTML Admin Template" class="w-6" src="../assets/images/logo.svg" />
+          <span class="hidden xl:block text-white text-lg ml-3"> Rubick </span>
+      </a>
+      <div class="side-nav__devider my-6"></div>
+      <ul>
+          <li>
+              <a href="javascript:;.html" class="side-menu side-menu--active">
+                  <div class="side-menu__icon"><i data-lucide="home"></i></div>
+                  <div class="side-menu__title">
+                      Dashboard
+                      <div class="side-menu__sub-icon transform rotate-180"><i data-lucide="chevron-down"></i></div>
+                  </div>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="side-menu">
+                  <div class="side-menu__icon"><lucide-angular name="box" class="my-icon"></lucide-angular></div>
+                  <div class="side-menu__title">
+                      Menu Layout 2
+                      <div class="side-menu__sub-icon">
+                          <lucide-angular name="chevron-down" class="my-icon"></lucide-angular>
+                      </div>
+                  </div>
+              </a>
+              <ul class="">
+                  <li>
+                      <a href="index.html" class="side-menu">
+                          <div class="side-menu__icon"><i data-lucide="activity"></i></div>
+                          <div class="side-menu__title">Side Menu</div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu">
+                          <div class="side-menu__icon"><i data-lucide="activity"></i></div>
+                          <div class="side-menu__title">Simple Menu</div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="top-menu-light-dashboard-overview-1.html" class="side-menu">
+                          <div class="side-menu__icon"><i data-lucide="activity"></i></div>
+                          <div class="side-menu__title">Top Menu</div>
+                      </a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </nav>
+  <!-- END: Side Menu -->
+  <!-- BEGIN: Content -->
+  <div class="content">
+      <router-outlet></router-outlet>
+  </div>
+  <!-- END: Content -->
+</div>

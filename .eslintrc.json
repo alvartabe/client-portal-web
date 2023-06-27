@@ -1,0 +1,68 @@
+{
+    "root": true,
+    "ignorePatterns": ["projects/**/*"],
+    "parserOptions": {
+        "ecmaVersion": 2015
+    },
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": ["tsconfig.json"],
+                "createDefaultProgram": true
+            },
+            "extends": ["plugin:@angular-eslint/ng-cli-compat", "plugin:@angular-eslint/ng-cli-compat--formatting-add-on", "plugin:@angular-eslint/template/process-inline-templates"],
+            "rules": {
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "app",
+                        "style": "kebab-case"
+                    }
+                ],
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "app",
+                        "style": "camelCase"
+                    }
+                ],
+                "max-len": ["error", { "code": 350 }],
+                "no-shadow": "off",
+                "@typescript-eslint/no-shadow": ["error", { "ignoreTypeValueShadow": true }],
+                "@typescript-eslint/no-explicit-any": "error",
+                "no-console": ["error", { "allow": [""] }],
+                "object-shorthand": "off",
+                "@typescript-eslint/explicit-function-return-type": "error"
+            }
+        },
+        {
+          "files": [
+            "*.spec.ts"
+          ],
+          "parserOptions": {
+            "project": [
+              "tsconfig.spec.json"
+            ],
+            "createDefaultProgram": true
+          },
+          "extends": [
+            "plugin:jasmine/recommended"
+          ],
+          "plugins": ["jasmine"],
+          "rules": {
+            "jasmine/prefer-toHaveBeenCalledWith": "off",
+            "jasmine/new-line-before-expect": "off",
+            "jasmine/no-unsafe-spy": "error"
+          }
+        },
+        {
+          "files": ["*.html"],
+          "extends": ["plugin:@angular-eslint/template/recommended"],
+          "rules": {}
+        }
+    ],
+    "extends": ["prettier"]
+}

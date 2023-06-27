@@ -1,0 +1,36 @@
+import { HttpClient, HttpContext, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Injectable, Inject } from '@angular/core';
+import { Observable, catchError, throwError } from 'rxjs';
+import { AppConfig } from '../core/app-config';
+import { APP_CONFIG } from '../core/app-config.token';
+import { UserModel } from '../models/user.model';
+import { LoginModel } from '../authentication/models/login.model';
+import { TokenModel } from '../models/token.model';
+import { REQUIRES_AUTHENTICATION } from '../core/requires-authentication.token';
+
+@Injectable({
+    providedIn: 'root',
+})
+export class AuthenticationClient {
+    constructor(@Inject(APP_CONFIG) private config: AppConfig, private http: HttpClient) {}
+
+    public login(login: LoginModel): Observable<TokenModel> {
+        const url = `${this.config.authApi.url}/token`;
+        return this.http.post<TokenModel>(url, login).pipe(catchError(this.handleError));
+    }
+
+    public getUser(id: number): Observable<UserModel> {
+
+      // const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHZhcnRhYmUiLCJleHAiOjE2ODU3NTkxOTh9.vdoKmNO4jkHL8j4BeQvvS4360VVX6rkwmy45ujJEPXE');
+      // // headers.set('content-lenght', '170');
+      const context = new HttpContext().set(REQUIRES_AUTHENTICATION, true);
+      const httpOptions = { context };
+
+      const url = `${this.config.authApi.url}/me/`;
+      return this.http.get<UserModel>(url, httpOptions).pipe(catchError(this.handleError));
+  }
+
+    private handleError(error: HttpErrorResponse): Observable<never> {
+        return throwError(() => error.message);
+    }
+}
