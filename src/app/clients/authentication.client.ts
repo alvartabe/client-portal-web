@@ -15,7 +15,7 @@ export class AuthenticationClient {
     constructor(@Inject(APP_CONFIG) private config: AppConfig, private http: HttpClient) {}
 
     public login(login: LoginModel): Observable<TokenModel> {
-        const url = `${this.config.authApi.url}/token`;
+        const url = `${this.config.authApi.url}/login`;
         return this.http.post<TokenModel>(url, login).pipe(catchError(this.handleError));
     }
 
@@ -26,7 +26,7 @@ export class AuthenticationClient {
       const context = new HttpContext().set(REQUIRES_AUTHENTICATION, true);
       const httpOptions = { context };
 
-      const url = `${this.config.authApi.url}/me/`;
+      const url = `http://localhost:8080/order/`;
       return this.http.get<UserModel>(url, httpOptions).pipe(catchError(this.handleError));
   }
 

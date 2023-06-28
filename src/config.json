@@ -1,20 +1,20 @@
 {
-  "logging": {
-    "minimumLevel": "debug"
-  },
-  "authApi": {
-    "url": "http://localhost:8000/auth"
-  },
-  "authorization": {
-    "authority": "",
-    "configId": "1",
-    "redirectUrl": "",
-    "postLogoutRedirectUri": "",
-    "clientId": "<your clientId>",
-    "scope": "openid profile email offline_access",
-    "responseType": "code",
-    "silentRenew": true,
-    "useRefreshToken": true,
-    "logLevel": 1
-  }
+    "logging": {
+        "minimumLevel": "debug"
+    },
+    "authApi": {
+        "url": "http://localhost:8080/api"
+    },
+    "authorization": {
+        "authority": "",
+        "configId": "1",
+        "redirectUrl": "",
+        "postLogoutRedirectUri": "",
+        "clientId": "<your clientId>",
+        "scope": "openid profile email offline_access",
+        "responseType": "code",
+        "silentRenew": true,
+        "useRefreshToken": true,
+        "logLevel": 1
+    }
 }

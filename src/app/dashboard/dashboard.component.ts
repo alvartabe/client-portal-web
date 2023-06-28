@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit(): void {
         this.authenticationService.getUser(1).subscribe((response) => {
-            //console.log(response);
+            console.log(response);
         });
     }
 }
