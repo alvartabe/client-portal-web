@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { RegisterModel } from '../models/register.model';
+import { RegisterModel } from '../../models/register.model';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -26,27 +26,31 @@ export class RegisterComponent implements OnInit {
                 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
                 validation: (field, validateUntouched, form) => field?.errors?.pattern && (validateUntouched || field?.dirty || form?.submitted),
                 message: 'Password must contain minimum 8 characters, one uppcase and lowercase letter, one number and one special character.',
-            }
+            },
         ];
         this.passwordConfirmationValidator = [
             {
                 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-                validation: (field, validateUntouched, form) => form.controls.password.value !== this.registerForm.form.controls.passwordConfirmation.value && (validateUntouched || field?.dirty || form?.submitted),
+                validation: (field, validateUntouched, form) => form.controls.password?.value !== this.registerForm.form.controls.passwordConfirmation?.value && (validateUntouched || field?.dirty || form?.submitted),
                 message: 'Password confirmation must match.',
-            }
+            },
         ];
     }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     onSubmit(): void {
-        // this.authenticationService.login(this.model).subscribe((response) => {
-        //     this.router.navigate(['/dashboard']);
-        // });
-        // this.registerForm.form.controls.username.setErrors({ username: true });
-        // this.registerForm.form.controls.email.setErrors({ email: true });
+        if (this.model.password !== this.model.passwordConfirmation) {
+            this.registerForm.form.controls.passwordConfirmation.setErrors({ notEqual: true });
+        }
 
-        // console.log('register');
+        this.authenticationService.register(this.model).subscribe({
+            next: (response) => {
+                console.log(response);
+            },
+            error: (error) => {
+                console.log(error);
+            },
+        });
     }
 }

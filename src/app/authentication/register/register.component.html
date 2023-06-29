@@ -39,7 +39,7 @@
                             <input type="password" #password="ngModel" id="password" [(ngModel)]="model.password" name="password" placeholder="Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" class="intro-x login__input form-control py-3 px-4 block mt-4"/>
                             <app-field-errors [field]="registerForm.controls.password" [customValidations]="passwordValidator"></app-field-errors>
 
-                            <input type="password" #passwordConfirmation="ngModel" id="passwordConfirmation" [(ngModel)]="model.passwordConfirmation" name="passwordConfirmation" placeholder="Password confirmation" required class="intro-x login__input form-control py-3 px-4 block mt-4"/>
+                            <input type="password" #passwordConfirmation="ngModel" id="passwordConfirmation" [(ngModel)]="model.passwordConfirmation" name="passwordConfirmation" required placeholder="Password confirmation" class="intro-x login__input form-control py-3 px-4 block mt-4"/>
                             <app-field-errors [field]="registerForm.controls.passwordConfirmation" [customValidations]="passwordConfirmationValidator"></app-field-errors>
 
                         </div>

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { UserModel } from '../models/user.model';
-import { LoginModel } from '../authentication/models/login.model';
 import { AuthenticationClient } from '../clients/authentication.client';
 import { TokenModel } from '../models/token.model';
 import jwt_decode from 'jwt-decode';
+import { RegisterModel } from '../models/register.model';
+import { LoginModel } from '@app/models/login.model';
 
 @Injectable({
     providedIn: 'root',
@@ -41,6 +42,10 @@ export class AuthenticationService {
 
     public getUser(id: number): Observable<UserModel> {
         return this.authClient.getUser(id);
+    }
+
+    public register(user: RegisterModel): Observable<UserModel> {
+        return this.authClient.register(user);
     }
 
     public isTokenExpired(): boolean {

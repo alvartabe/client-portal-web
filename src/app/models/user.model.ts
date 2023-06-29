@@ -1,12 +1,10 @@
 export interface UserModel {
-    userId: string;
+    id: string;
     firstName: string;
     lastName: string;
     username: string;
-    emailAddress: string;
-    status: string;
-    displayName: string;
-    phoneNumber: string;
-    isLocked: boolean;
-    lastLogin: Date;
+    email: string;
+    enabled: boolean;
+    accountLocked: boolean;
+    accountExpired: boolean;
 }

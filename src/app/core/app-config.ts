@@ -4,7 +4,7 @@ export interface AppConfig {
       minimumLevel: string;
   };
 
-  authApi: {
+  api: {
       url: string;
   };
 
