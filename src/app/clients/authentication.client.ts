@@ -8,6 +8,7 @@ import { TokenModel } from '../models/token.model';
 import { REQUIRES_AUTHENTICATION } from '../core/requires-authentication.token';
 import { RegisterModel } from '@app/models/register.model';
 import { LoginModel } from '@app/models/login.model';
+import { ErrorsModel } from '@app/models/errors.model';
 
 @Injectable({
     providedIn: 'root',
@@ -34,6 +35,6 @@ export class AuthenticationClient {
     }
 
     private handleError(error: HttpErrorResponse): Observable<never> {
-        return throwError(() => error.message);
+        return throwError(() => error);
     }
 }

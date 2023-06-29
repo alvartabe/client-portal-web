@@ -4,6 +4,7 @@ import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FieldErrorValidation } from '@app/shared/field-errors/field-error-validation';
+import { ErrorsModel } from '@app/models/errors.model';
 
 @Component({
     selector: 'app-register',
@@ -13,7 +14,7 @@ import { FieldErrorValidation } from '@app/shared/field-errors/field-error-valid
 export class RegisterComponent implements OnInit {
     @ViewChild('registerForm', { static: true }) registerForm: NgForm;
 
-    model: RegisterModel = { username: '', password: '', firstName: '', lastName: '', passwordConfirmation: '', email: '' };
+    model: RegisterModel = { username: 'alvartabe', password: '@Varo1994', firstName: 'aaa', lastName: 'aaa', passwordConfirmation: '@Varo1994', email: 'alvartabe30@gmail.com' };
     passwordValidator: FieldErrorValidation[];
     passwordConfirmationValidator: FieldErrorValidation[];
 
@@ -50,6 +51,9 @@ export class RegisterComponent implements OnInit {
             },
             error: (error) => {
                 console.log(error);
+                if(error?.error?.errors) {
+                    console.log(error.error.errors)
+                }
             },
         });
     }
