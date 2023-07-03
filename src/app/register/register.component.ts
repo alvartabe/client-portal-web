@@ -1,15 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { RegisterModel } from '../../models/register.model';
-import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FieldErrorValidation } from '@app/shared/field-errors/field-error-validation';
-import { ErrorsModel } from '@app/models/errors.model';
+import { ErrorModel } from '@app/models/error.model';
+import { SharedModule } from '@app/shared/shared.module';
+import { AuthenticationService } from '@app/authentication.service';
+import { RegisterModel } from '@app/models/register.model';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
+    standalone: true,
+    imports: [SharedModule]
 })
 export class RegisterComponent implements OnInit {
     @ViewChild('registerForm', { static: true }) registerForm: NgForm;
@@ -17,6 +20,7 @@ export class RegisterComponent implements OnInit {
     model: RegisterModel = { username: 'alvartabe', password: '@Varo1994', firstName: 'aaa', lastName: 'aaa', passwordConfirmation: '@Varo1994', email: 'alvartabe30@gmail.com' };
     passwordValidator: FieldErrorValidation[];
     passwordConfirmationValidator: FieldErrorValidation[];
+    isLoading = false;
 
     readonly usernameMinLength = 8;
     readonly passwordMaxLength = 30;
@@ -45,16 +49,31 @@ export class RegisterComponent implements OnInit {
             this.registerForm.form.controls.passwordConfirmation.setErrors({ notEqual: true });
         }
 
-        this.authenticationService.register(this.model).subscribe({
-            next: (response) => {
-                console.log(response);
-            },
-            error: (error) => {
-                console.log(error);
-                if(error?.error?.errors) {
-                    console.log(error.error.errors)
-                }
-            },
-        });
+        if(this.registerForm.valid) {
+            this.cleanErrors();
+            this.isLoading = true;
+
+            this.authenticationService.register(this.model).subscribe({
+                next: (response) => {
+                    console.log(response);
+                },
+                error: (error) => {
+                    this.isLoading = false;
+                    if(error?.error?.errors) {
+                        this.setErrors(error?.error?.errors);
+                    }
+                },
+            });
+        }
+    }
+
+    private setErrors(errors: ErrorModel[]): void {
+        this.registerForm.form.controls.username.setErrors(errors.find(item => item.field === 'username') ? {notUnique:true} : null);
+        this.registerForm.form.controls.email.setErrors(errors.find(item => item.field === 'email') ? {notUnique:true} : null);
+    }
+
+    private cleanErrors(): void {
+        this.registerForm.form.controls.username.setErrors(null);
+        this.registerForm.form.controls.email.setErrors(null);
     }
 }

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '@app/authentication.service';
 import { LoginModel } from '@app/models/login.model';
+import { SharedModule } from '@app/shared/shared.module';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
+    standalone: true,
+    imports: [SharedModule]
 })
 export class LoginComponent implements OnInit {
     model: LoginModel = {username: '', password: ''};
