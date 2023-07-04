@@ -19,11 +19,13 @@ export class RegisterComponent {
     @ViewChild('registerForm', { static: true }) registerForm: NgForm;
 
     model: RegisterModel = { username: 'alvartabe', password: '@Varo1994', firstName: 'aaa', lastName: 'aaa', passwordConfirmation: '@Varo1994', email: 'alvartabe30@gmail.com' };
+    // model: RegisterModel = { username: '', password: '', firstName: '', lastName: '', passwordConfirmation: '', email: '' };
     passwordValidator: FieldErrorValidation[];
     passwordConfirmationValidator: FieldErrorValidation[];
     isLoading = false;
     remainingSeconds: Observable<number>;
     isSuccessful = false;
+    showGeneralErrorMessage = false;
 
     readonly usernameMinLength = 8;
     readonly passwordMaxLength = 30;
@@ -48,6 +50,11 @@ export class RegisterComponent {
     onSubmit(): void {
         if (this.model.password !== this.model.passwordConfirmation) {
             this.registerForm.form.controls.passwordConfirmation.setErrors({ notEqual: true });
+            return;
+        }
+
+        if (this.isLoading || this.isSuccessful) {
+           return;
         }
 
         if(this.registerForm.valid) {
@@ -57,10 +64,12 @@ export class RegisterComponent {
             this.authenticationService.register(this.model).subscribe({
                 next: () => {
                     this.isSuccessful = true;
+                    this.isLoading = false;
                     this.redirectToLoginPage();
                 },
                 error: (error) => {
                     this.isLoading = false;
+                    this.showGeneralErrorMessage = true;
                     if(error?.error?.errors) {
                         this.setErrors(error?.error?.errors);
                     }
@@ -75,6 +84,7 @@ export class RegisterComponent {
     }
 
     private cleanErrors(): void {
+        this.showGeneralErrorMessage = false;
         this.registerForm.form.controls.username.setErrors(null);
         this.registerForm.form.controls.email.setErrors(null);
     }

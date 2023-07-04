@@ -60,7 +60,8 @@
                         </div>
                     </form>
                     <div *ngIf="isSuccessful" class="alert alert-success-soft show flex items-center mb-2 mt-5" role="alert"> <app-icon [name]="'check-circle'" class="mr-2"></app-icon> The user&nbsp;<b>{{this.model.username}}</b>&nbsp;has been successfully registered.</div>
-                    <div *ngIf="isSuccessful" class="alert alert-outline-secondary alert-dismissible show flex items-center mb-2" role="alert">  <app-icon [name]="'alert-octagon'" class="mr-2"></app-icon> You'll be redirected to the login page in: {{remainingSeconds | async}} <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> <i data-lucide="x" class="w-4 h-4"></i> </button> </div>
+                    <div *ngIf="isSuccessful" class="alert alert-outline-secondary alert-dismissible show flex items-center mb-2" role="alert"> <app-icon [name]="'alert-octagon'" class="mr-2"></app-icon> You'll be redirected to the login page in: {{remainingSeconds | async}} <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> <i data-lucide="x" class="w-4 h-4"></i> </button> </div>
+                    <div *ngIf="showGeneralErrorMessage" class="alert alert-danger-soft show flex items-center mb-2 mt-5" role="alert"> <app-icon [name]="'alert-octagon'" class="mr-2"></app-icon> Something went wrong. <br> Please review your input fields or contact the company for assistance.</div>
                     <div class="intro-x mt-10 xl:mt-24 text-slate-600 dark:text-slate-500 text-center xl:text-left">By signin up, you agree to our <a class="text-primary dark:text-slate-200" href="">Terms and Conditions</a> & <a class="text-primary dark:text-slate-200" href="">Privacy Policy</a></div>
                 </div>
             </div>
