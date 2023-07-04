@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FieldErrorValidation } from '@app/shared/field-errors/field-error-validation';
@@ -6,6 +6,7 @@ import { ErrorModel } from '@app/models/error.model';
 import { SharedModule } from '@app/shared/shared.module';
 import { AuthenticationService } from '@app/authentication.service';
 import { RegisterModel } from '@app/models/register.model';
+import { Observable, interval, map, takeWhile, tap } from 'rxjs';
 
 @Component({
     selector: 'app-register',
@@ -14,13 +15,15 @@ import { RegisterModel } from '@app/models/register.model';
     standalone: true,
     imports: [SharedModule]
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
     @ViewChild('registerForm', { static: true }) registerForm: NgForm;
 
     model: RegisterModel = { username: 'alvartabe', password: '@Varo1994', firstName: 'aaa', lastName: 'aaa', passwordConfirmation: '@Varo1994', email: 'alvartabe30@gmail.com' };
     passwordValidator: FieldErrorValidation[];
     passwordConfirmationValidator: FieldErrorValidation[];
     isLoading = false;
+    remainingSeconds: Observable<number>;
+    isSuccessful = false;
 
     readonly usernameMinLength = 8;
     readonly passwordMaxLength = 30;
@@ -42,8 +45,6 @@ export class RegisterComponent implements OnInit {
         ];
     }
 
-    ngOnInit(): void {}
-
     onSubmit(): void {
         if (this.model.password !== this.model.passwordConfirmation) {
             this.registerForm.form.controls.passwordConfirmation.setErrors({ notEqual: true });
@@ -54,8 +55,9 @@ export class RegisterComponent implements OnInit {
             this.isLoading = true;
 
             this.authenticationService.register(this.model).subscribe({
-                next: (response) => {
-                    console.log(response);
+                next: () => {
+                    this.isSuccessful = true;
+                    this.redirectToLoginPage();
                 },
                 error: (error) => {
                     this.isLoading = false;
@@ -75,5 +77,17 @@ export class RegisterComponent implements OnInit {
     private cleanErrors(): void {
         this.registerForm.form.controls.username.setErrors(null);
         this.registerForm.form.controls.email.setErrors(null);
+    }
+
+    private redirectToLoginPage(): void {
+        this.remainingSeconds = interval(1000).pipe(
+            map((seconds: number) => 5 - seconds),
+            takeWhile(seconds => seconds >= 0),
+            tap((seconds: number) => {
+                if (seconds === 0) {
+                    this.router.navigateByUrl('login');
+                }
+            })
+        );
     }
 }
