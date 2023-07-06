@@ -22,8 +22,8 @@ export class RegisterComponent {
     // model: RegisterModel = { username: '', password: '', firstName: '', lastName: '', passwordConfirmation: '', email: '' };
     passwordValidator: FieldErrorValidation[];
     passwordConfirmationValidator: FieldErrorValidation[];
-    isLoading = false;
     remainingSeconds: Observable<number>;
+    isLoading = false;
     isSuccessful = false;
     showGeneralErrorMessage = false;
 

@@ -24,8 +24,11 @@
                     <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign up to your account. Manage all orders in one place</div>
                     <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
                         <div class="intro-x mt-8">
-                            <input type="text" id="username" [(ngModel)]="model.username" name="username" class="intro-x login__input form-control py-3 px-4 block" placeholder="Username" />
-                            <input type="password" id="password" [(ngModel)]="model.password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" />
+                            <input type="text" id="username" [(ngModel)]="model.username" name="username" required class="intro-x login__input form-control py-3 px-4 block" placeholder="Username" />
+                            <app-field-errors [field]="loginForm.controls.username"></app-field-errors>
+
+                            <input type="password" id="password" [(ngModel)]="model.password" name="password" required class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" />
+                            <app-field-errors [field]="loginForm.controls.password"></app-field-errors>
                         </div>
                         <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
                             <div class="flex items-center mr-auto">
@@ -35,11 +38,14 @@
                             <a href="">Forgot Password?</a>
                         </div>
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top" type="submit">Login</button>
-                            <button class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Register</button>
+                            <button class="btn btn-primary py-4 px-5 w-full xl:w-32 xl:mr-3 align-top max-h-12" type="submit">
+                                Login <app-icon [hidden]="!isLoading" [name]="'loader-2'" [spin]="true" class="ml-2"></app-icon>
+                            </button>
+                            <a [routerLink]="['/register']" class="btn btn-outline-secondary py-4 px-5 w-full xl:w-32 mt-3 xl:mt-0 align-top max-h-12">Register</a>
                         </div>
                     </form>
-
+                    <div *ngIf="showGeneralErrorMessage" class="alert alert-danger-soft show flex items-center mb-2 mt-5" role="alert"> <app-icon [name]="'alert-octagon'" class="mr-2"></app-icon> Something went wrong. <br> Please contact the company for assistance.</div>
+                    <div *ngIf="showCredentialsError" class="alert alert-danger-soft show flex items-center mb-2 mt-5" role="alert"> <app-icon [name]="'alert-octagon'" class="mr-2"></app-icon> Invalid username or password. Please verify your login credentials and try again.</div>
                     <div class="intro-x mt-10 xl:mt-24 text-slate-600 dark:text-slate-500 text-center xl:text-left">By signin up, you agree to our <a class="text-primary dark:text-slate-200" href="">Terms and Conditions</a> & <a class="text-primary dark:text-slate-200" href="">Privacy Policy</a></div>
                 </div>
             </div>
