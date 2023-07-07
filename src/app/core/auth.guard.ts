@@ -4,7 +4,7 @@ import { TokenValidationService } from '@app/core/token-validation.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class DashboardGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
     constructor(private router: Router, private tokenValidationService: TokenValidationService) {}
 
     canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

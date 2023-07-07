@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { JWT_TOKEN } from '@app/constants/constants';
 import jwt_decode from 'jwt-decode';
 
-
 @Injectable({
     providedIn: 'root',
 })
@@ -27,8 +26,8 @@ export class TokenValidationService {
     }
 
     private isExpired(): boolean {
-        const expiryTime: number = this.getExpiryTime();
-        return expiryTime ? 1000 * expiryTime - new Date().getTime() < 5000 : false;
+        this.token = localStorage.getItem(JWT_TOKEN) ? localStorage.getItem(JWT_TOKEN) : '';
+        return this.token ? this.getExpiryTime() ? 1000 * this.getExpiryTime() - new Date().getTime() < 5000 : false : true;
     }
 
     private getExpiryTime(): number {
@@ -37,7 +36,6 @@ export class TokenValidationService {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private getDecodeToken(): any {
-        this.token = localStorage.getItem(JWT_TOKEN) ? localStorage.getItem(JWT_TOKEN) : '';
         return jwt_decode(this.token);
     }
 }
