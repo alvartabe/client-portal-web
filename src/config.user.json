@@ -2,8 +2,8 @@
   "logging": {
     "minimumLevel": "debug"
   },
-  "authApi": {
-    "url": "http://localhost:8000/auth"
+  "api": {
+    "url": "http://localhost:8080/api"
   },
   "authorization": {
     "authority": "",
