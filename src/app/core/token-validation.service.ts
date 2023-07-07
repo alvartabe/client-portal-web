@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode';
 @Injectable({
     providedIn: 'root',
 })
-export class UserService {
+export class TokenValidationService {
     private jwtToken: string;
 
     public get token(): string {
