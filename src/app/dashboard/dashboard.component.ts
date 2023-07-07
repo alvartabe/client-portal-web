@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,8 +9,6 @@ export class DashboardComponent implements OnInit {
     constructor() {}
 
     ngOnInit(): void {
-        // this.authenticationService.getUser(1).subscribe((response) => {
-        //     console.log(response);
-        // });
+
     }
 }
