@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { AuthGuard } from '@app/core/auth.guard';
+import { UserModule } from './user/user.module';
 
 @NgModule({
     declarations: [
@@ -10,7 +11,9 @@ import { AuthGuard } from '@app/core/auth.guard';
     ],
     imports: [
         CommonModule,
-        DashboardRoutingModule
+        DashboardRoutingModule,
+        // feature modules
+        UserModule
     ],
     providers: [
         AuthGuard

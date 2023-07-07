@@ -4,18 +4,17 @@ import { DashboardComponent } from './dashboard.component';
 import { AuthGuard } from '@app/core/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
-    // children: [
-    //   {
-    //     path: 'table',
-    //     component: TableComponent
-    //   }
-    // ]
-  }
-    // Add more routes for registration, forgot password, etc.
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'user',
+                loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+            },
+        ],
+    },
 ];
 
 @NgModule({
