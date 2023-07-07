@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { JWT_TOKEN } from '@app/constants/constants';
 import jwt_decode from 'jwt-decode';
 
 
@@ -7,19 +8,9 @@ import jwt_decode from 'jwt-decode';
 })
 export class UserService {
     private jwtToken: string;
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    decodedToken: { [key: string]: string } | undefined;
-
-    constructor() {
-        this.jwtToken = '';
-    }
 
     public get token(): string {
-        if (this.jwtToken) {
-            return this.jwtToken;
-        } else {
-            return '';
-        }
+        return this.jwtToken ? this.jwtToken : '';
     }
 
     public set token(token: string | null) {
@@ -27,27 +18,26 @@ export class UserService {
     }
 
     public isTokenExpired(): boolean {
-        const expiryTime: number = this.getExpiryTime();
-        if (expiryTime) {
-            return 1000 * expiryTime - new Date().getTime() < 5000;
+        if (this.isExpired()) {
+            localStorage.setItem(JWT_TOKEN, '');
+            return true;
         } else {
             return false;
         }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private getDecodeToken(): any {
-        if (!this.jwtToken) {
-            this.token = localStorage.getItem('jwtToken') ? localStorage.getItem('jwtToken') : '';
-        }
-        return jwt_decode(this.jwtToken);
+    private isExpired(): boolean {
+        const expiryTime: number = this.getExpiryTime();
+        return expiryTime ? 1000 * expiryTime - new Date().getTime() < 5000 : false;
+    }
+
+    private getExpiryTime(): number {
+        return this.getDecodeToken() ? this.getDecodeToken().exp : null;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private getExpiryTime(): any {
-        if (this.getDecodeToken()) {
-            return this.getDecodeToken().exp;
-        }
-        return this.getDecodeToken() ? this.getDecodeToken().exp : null;
+    private getDecodeToken(): any {
+        this.token = localStorage.getItem(JWT_TOKEN) ? localStorage.getItem(JWT_TOKEN) : '';
+        return jwt_decode(this.token);
     }
 }
