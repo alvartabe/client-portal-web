@@ -25,7 +25,7 @@
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets", "src/config.json", "src/config.user.json"],
                         "styles": ["src/styles/styles.scss", "src/styles/app.css"],
-                        "scripts": ["node_modules/jquery/dist/jquery.js", "src/scripts/app.js"]
+                        "scripts": ["src/scripts/app.js"]
                     },
                     "configurations": {
                         "production": {
@@ -88,7 +88,7 @@
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets", "src/config.json", "src/config.user.json"],
                         "styles": ["src/styles/styles.scss", "src/styles/app.css"],
-                        "scripts": ["node_modules/jquery/dist/jquery.js", "src/scripts/app.js"]
+                        "scripts": ["src/scripts/app.js"]
                     }
                 },
                 "lint": {

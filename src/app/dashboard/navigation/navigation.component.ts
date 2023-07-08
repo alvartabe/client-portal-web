@@ -1,23 +1,49 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector: 'app-navigation',
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent implements AfterViewInit {
-    constructor(private http: HttpClient) {}
+export class NavigationComponent implements OnInit {
+    activeSubMenu: string | null = null;
+    activeMenu: string | null = null;
+    readonly user = 'user';
+    readonly dashboard = 'dashboard';
+    readonly account = 'account';
 
-    ngAfterViewInit(): void {
-        this.loadScript('assets/menu.js');
+    constructor(private route: Router) {}
+
+    ngOnInit(): void {
+        this.activeMenu = this.getActiveMenu();
+        this.toggleSubMenu(this.getActiveMenu());
+
+        this.route.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.setMenu();
+            }
+        });
     }
 
-    private loadScript(scriptUrl: string): void {
-        this.http.get(scriptUrl, { responseType: 'text' }).subscribe((script) => {
-            const customScript = document.createElement('script');
-            customScript.innerHTML = script;
-            document.body.appendChild(customScript);
-        });
+    toggleSubMenu(subMenu: string): void {
+        if (this.activeSubMenu === subMenu) {
+            this.activeSubMenu = null;
+        } else {
+            this.activeSubMenu = subMenu;
+        }
+    }
+
+    private setMenu(): void {
+        this.activeMenu = this.getActiveMenu();
+    }
+
+    private getActiveMenu(): string {
+        if (this.route.url.includes(this.user)) {
+            return this.user;
+        } else if (this.route.url.includes(this.dashboard)) {
+            return this.dashboard;
+        }
+        return '';
     }
 }
