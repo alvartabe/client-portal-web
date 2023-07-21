@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { UserService } from './user.service';
 
 @NgModule({
     declarations: [
@@ -25,5 +26,8 @@ import {MatMenuModule} from '@angular/material/menu';
         MatMenuModule,
         MatButtonModule
     ],
+    providers:[
+        UserService
+    ]
 })
 export class UserModule {}
