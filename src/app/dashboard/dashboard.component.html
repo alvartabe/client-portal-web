@@ -7,8 +7,45 @@
         <!-- END: Side Menu -->
         <!-- BEGIN: Content -->
         <div class="content">
+            <div class="top-bar">
+                <app-breadcrumb class="-intro-x mr-auto hidden sm:flex"></app-breadcrumb>
+                <app-search></app-search>
+                <app-account-menu></app-account-menu>
+            </div>
             <router-outlet></router-outlet>
         </div>
         <!-- END: Content -->
     </div>
 </div>
+
+
+<!-- <div class="content">
+    <div class="top-bar">
+        <app-breadcrumb class="-intro-x mr-auto hidden sm:flex"></app-breadcrumb>
+        <div class="intro-x relative mr-3 sm:mr-6">
+            <div class="search hidden sm:block">
+                <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
+                <app-icon [name]="'Search'" class="search__icon"></app-icon>
+            </div>
+        </div>
+
+         <div class="intro-x dropdown w-8 h-8">
+            <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" [matMenuTriggerFor]="menu">
+                <img src="../assets/images/profile-6.jpg">
+            </div>
+            <mat-menu #menu="matMenu">
+                <div class="dropdown-menu w-56">
+                    <ul class="dropdown-content bg-primary text-white">
+                        <li class="p-2" mat-menu-item>
+                            <div class="font-medium">Leonardo DiCaprio</div>
+                            <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">Frontend Engineer</div>
+                        </li>
+                        <li mat-menu-item>
+                            <hr class="dropdown-divider border-white/[0.08]">
+                        </li>
+                    </ul>
+                </div>
+            </mat-menu>
+        </div>
+    </div>
+</div> -->

@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from './icon.component';
-import { LucideAngularModule, Home, Menu, UserCheck, Loader2, CheckCircle, AlertOctagon, ChevronDown, Users, Activity, Table, User } from 'lucide-angular';
+import { LucideAngularModule, Home, Menu, UserCheck, Loader2, CheckCircle, AlertOctagon, ChevronDown, Users, Activity, Table, User, Search } from 'lucide-angular';
 
 @NgModule({
     declarations: [IconComponent],
@@ -20,7 +20,8 @@ import { LucideAngularModule, Home, Menu, UserCheck, Loader2, CheckCircle, Alert
                 Users,
                 Activity,
                 Table,
-                User
+                User,
+                Search
             }
         )
     ],
