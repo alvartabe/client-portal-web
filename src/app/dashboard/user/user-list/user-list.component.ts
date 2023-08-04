@@ -19,12 +19,7 @@ export class UserListComponent implements AfterViewInit, OnInit {
     dataSource: MatTableDataSource<UserModel>;
     isLoading = false;
 
-    constructor(private userService: UserService) {
-        // Create 100 users
-        // const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
-        // Assign the data to the data source for the table to render
-        //this.dataSource = new MatTableDataSource(users);
-    }
+    constructor(private userService: UserService) {}
 
     ngOnInit(): void {
         this.isLoading = true;

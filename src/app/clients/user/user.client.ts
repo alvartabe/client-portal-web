@@ -17,7 +17,7 @@ export class UserClient {
     constructor(@Inject(APP_CONFIG) private config: AppConfig, private http: HttpClient) {}
 
     public getAllUsers(): Observable<UserModel[]> {
-        const url = `${this.config.api.url}/user`;
+        const url = `${this.config.api.url}/user?sortBy=id&sortOrder=desc`;
         return this.http.get<UserModel[]>(url, this.httpOptions).pipe(catchError(this.handleError));
     }
 
