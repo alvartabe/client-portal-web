@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../user.service';
 import { UserModel } from '@app/models/user.model';
@@ -10,28 +10,24 @@ import { UserModel } from '@app/models/user.model';
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent implements AfterViewInit, OnInit {
+export class UserListComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
     displayedColumns: string[] = ['id', 'username', 'firstName', 'lastName', 'email', 'enabled'];
     dataSource: MatTableDataSource<UserModel>;
-    isLoading = false;
+    isLoading = true;
 
     constructor(private userService: UserService) {}
 
     ngOnInit(): void {
-        this.isLoading = true;
-        this.userService.getAllUsers().subscribe((results: UserModel[]) => {
+        this.userService.getUsers().subscribe((results: UserModel[]) => {
             this.dataSource = new MatTableDataSource(results);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
             this.isLoading = false;
         });
-    }
-
-    ngAfterViewInit(): void {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
     }
 
     applyFilter(event: Event): void {
@@ -42,6 +38,8 @@ export class UserListComponent implements AfterViewInit, OnInit {
             this.dataSource.paginator.firstPage();
         }
     }
+
+    sortByColumn(sort: Sort): void { }
 }
 
 

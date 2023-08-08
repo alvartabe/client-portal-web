@@ -5,6 +5,7 @@ import { AppConfig } from '../../core/app-config';
 import { APP_CONFIG } from '../../core/app-config.token';
 import { REQUIRES_AUTHENTICATION } from '../../core/requires-authentication.token';
 import { UserModel } from '@app/models/user.model';
+import { TableParamsModel } from '@app/models/table-params.model';
 
 @Injectable({
     providedIn: 'root',
@@ -16,8 +17,8 @@ export class UserClient {
 
     constructor(@Inject(APP_CONFIG) private config: AppConfig, private http: HttpClient) {}
 
-    public getAllUsers(): Observable<UserModel[]> {
-        const url = `${this.config.api.url}/user?sortBy=id&sortOrder=desc`;
+    public getUsers(): Observable<UserModel[]> {
+        const url = `${this.config.api.url}/user`;
         return this.http.get<UserModel[]>(url, this.httpOptions).pipe(catchError(this.handleError));
     }
 
