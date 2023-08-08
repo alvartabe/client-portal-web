@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { UserClient } from '@app/clients/user/user.client';
-import { TableParamsModel } from '@app/models/table-params.model';
 import { UserModel } from '@app/models/user.model';
 import { Observable } from 'rxjs';
 

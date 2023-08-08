@@ -4,6 +4,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../user.service';
 import { UserModel } from '@app/models/user.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TableParamsModel } from '@app/models/table-params.model';
 
 @Component({
     selector: 'app-user-list',
@@ -18,8 +20,14 @@ export class UserListComponent implements OnInit {
     displayedColumns: string[] = ['id', 'username', 'firstName', 'lastName', 'email', 'enabled'];
     dataSource: MatTableDataSource<UserModel>;
     isLoading = true;
+    tableParams = {} as TableParamsModel;
 
-    constructor(private userService: UserService) {}
+    pageSize = 5;
+    pageIndex = 0;
+    sortActive = 'username';
+    sortDirection = 'asc';
+
+    constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
     ngOnInit(): void {
         this.userService.getUsers().subscribe((results: UserModel[]) => {
@@ -39,7 +47,19 @@ export class UserListComponent implements OnInit {
         }
     }
 
-    sortByColumn(sort: Sort): void { }
+    sortByColumn(sort: Sort): void {
+        this.tableParams.sortActive = sort.active ? sort.active : null;
+        this.tableParams.sortDirection = sort.direction ? sort.direction : null;
+        this.refreshPage();
+    }
+
+    private refreshPage(): void {
+        this.router.navigate([], {
+            queryParamsHandling: 'merge',
+            relativeTo: this.activatedRoute,
+            queryParams: this.tableParams,
+        });
+    }
 }
 
 

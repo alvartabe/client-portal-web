@@ -1,11 +1,10 @@
-import { HttpClient, HttpContext, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { AppConfig } from '../../core/app-config';
 import { APP_CONFIG } from '../../core/app-config.token';
 import { REQUIRES_AUTHENTICATION } from '../../core/requires-authentication.token';
 import { UserModel } from '@app/models/user.model';
-import { TableParamsModel } from '@app/models/table-params.model';
 
 @Injectable({
     providedIn: 'root',

@@ -1,4 +1,4 @@
 export interface TableParamsModel {
-    sortActive: string;
-    sortDirection: string;
+    sortActive: string | null;
+    sortDirection: string | null;
 }
