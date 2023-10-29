@@ -12,7 +12,7 @@ const routes: Routes = [
         path: 'list',
         component: UserListComponent,
         data: {
-            breadcrumb: 'Registered users'
+            breadcrumb: 'All users'
         },
     },
 ];
