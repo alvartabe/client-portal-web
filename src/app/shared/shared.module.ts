@@ -4,9 +4,13 @@ import { FieldErrorsComponent } from './field-errors/field-errors.component';
 import { FormsModule } from '@angular/forms';
 import { IconsModule } from './icons/icons.module';
 import { RouterModule } from '@angular/router';
+import { YesNoPipe } from '@app/pipes/yes-no.pipe';
 
 @NgModule({
-    declarations: [FieldErrorsComponent],
+    declarations: [
+        FieldErrorsComponent,
+        YesNoPipe,
+    ],
     imports: [
         CommonModule,
         RouterModule,
@@ -17,7 +21,8 @@ import { RouterModule } from '@angular/router';
         CommonModule,
         RouterModule,
         IconsModule,
-        FieldErrorsComponent
+        FieldErrorsComponent,
+        YesNoPipe
     ],
 })
 export class SharedModule {}

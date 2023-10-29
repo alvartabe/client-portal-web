@@ -1,0 +1,70 @@
+<nav class="side-nav">
+    <a href="" class="intro-x flex items-center pl-5 pt-4">
+        <img alt="StudioAwak" src="../assets/images/logo.png" />
+    </a>
+    <div class="side-nav__devider my-6"></div>
+    <ul>
+        <li>
+            <a [routerLink]="['/dashboard/']" class="side-menu" (click)="toggleSubMenu(dashboard)"  [ngClass]="{'side-menu--active': activeMenu === dashboard }">
+                <div class="side-menu__icon">
+                    <app-icon [name]="'home'"></app-icon>
+                </div>
+                <div class="side-menu__title">Dashboard</div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="side-menu" (click)="toggleSubMenu(user)" [ngClass]="{'side-menu--active': activeMenu === user }" >
+                <div class="side-menu__icon">
+                    <app-icon [name]="'users'"></app-icon>
+                </div>
+                <div class="side-menu__title">
+                    Users
+                    <div class="side-menu__sub-icon" [ngClass]="{'rotate-icon': activeSubMenu === user}">
+                        <app-icon [name]="'chevron-down'"></app-icon>
+                    </div>
+                </div>
+            </a>
+            <ul class="sub-menu" [ngClass]="{'open': activeSubMenu === user}">
+                <li>
+                    <a [routerLink]="['/dashboard/user/list']" class="side-menu"  routerLinkActive="side-menu--active">
+                        <div class="side-menu__icon">
+                            <app-icon [name]="'table'"></app-icon>
+                        </div>
+                        <div class="side-menu__title">All users</div>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/dashboard/user/edit']" class="side-menu"  routerLinkActive="side-menu--active">
+                        <div class="side-menu__icon">
+                            <app-icon [name]="'User'"></app-icon>
+                        </div>
+                        <div class="side-menu__title">Edit user</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="side-menu" (click)="toggleSubMenu(account)" [ngClass]="{'side-menu--active': activeMenu === account }">
+                <div class="side-menu__icon">
+                    <app-icon [name]="'alert-octagon'"></app-icon>
+                </div>
+                <div class="side-menu__title">
+                    Account
+                    <div class="side-menu__sub-icon" [ngClass]="{'rotate-icon': activeSubMenu === account}">
+                        <app-icon [name]="'chevron-down'"></app-icon>
+                    </div>
+                </div>
+            </a>
+            <ul class="sub-menu" [ngClass]="{'open': activeSubMenu === account}">
+                <li>
+                    <a href="#" class="side-menu">
+                        <div class="side-menu__icon">
+                            <app-icon [name]="'activity'"></app-icon>
+                        </div>
+                        <div class="side-menu__title">Account config</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

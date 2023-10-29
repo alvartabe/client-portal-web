@@ -7,6 +7,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthHeaderInterceptor } from './core/auth-header.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { AuthenticationClientModule } from './clients/authentication/authentication.client.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserClientModule } from './clients/user/user.client.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AuthenticationClientModule } from './clients/authentication/authenticat
     HttpClientModule,
     AppRoutingModule,
     DashboardModule,
-    AuthenticationClientModule
+    AuthenticationClientModule,
+    UserClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

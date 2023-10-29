@@ -24,8 +24,12 @@
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets", "src/config.json", "src/config.user.json"],
-                        "styles": ["src/styles/styles.scss", "src/styles/app.css"],
-                        "scripts": ["node_modules/jquery/dist/jquery.js", "src/scripts/app.js"]
+                        "styles": [
+                          "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+                          "src/styles/styles.scss",
+                          "src/styles/app.css"
+                        ],
+                        "scripts": ["src/scripts/app.js"]
                     },
                     "configurations": {
                         "production": {
@@ -87,8 +91,12 @@
                         "karmaConfig": "karma.conf.js",
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets", "src/config.json", "src/config.user.json"],
-                        "styles": ["src/styles/styles.scss", "src/styles/app.css"],
-                        "scripts": ["node_modules/jquery/dist/jquery.js", "src/scripts/app.js"]
+                        "styles": [
+                          "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+                          "src/styles/styles.scss",
+                          "src/styles/app.css"
+                        ],
+                        "scripts": ["src/scripts/app.js"]
                     }
                 },
                 "lint": {

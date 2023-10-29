@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+// td,
+// th {
+//     width: 25%;
+// }
+
+.loading-overlay-spinner {
+    @apply absolute top-44 flex flex-col items-center justify-center w-full;
+    // width: 97%;
+}
+
+.table-icon {
+    @apply text-blue-600 scale-250
+}
+
+.has-overlay {
+    @apply opacity-30;
+}
+
+.mat-column-id, .mat-column-enabled {
+    @apply w-16;
+}
