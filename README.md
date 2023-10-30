@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * Standalone components
 * Service injection
 * Lazy loading modules and components
-* configuration files and environments 
+* Configuration files and environments 
 * Clean RxJs operations
 * Project file stucture
 
