@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { REQUIRES_AUTHENTICATION } from './requires-authentication.token';
-import { TokenValidationService } from '@app/core/token-validation.service';
+import { TokenValidationService } from '@app/core/app-token-validation.service';
 
 @Injectable()
 export class AuthHeaderInterceptor implements HttpInterceptor {

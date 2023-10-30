@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { FieldErrorValidation } from '@app/shared/field-errors/field-error-validation';
 import { ErrorModel } from '@app/models/error.model';
 import { SharedModule } from '@app/shared/shared.module';
-import { AuthenticationService } from '@app/clients/authentication/authentication.service';
+import { AuthenticationService } from '@app/core/app-authentication.service';
 import { RegisterModel } from '@app/models/register.model';
 import { Observable, interval, map, takeWhile, tap } from 'rxjs';
 

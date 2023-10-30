@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, UrlTree, Router } from '@angular/router';
-import { TokenValidationService } from '@app/core/token-validation.service';
+import { TokenValidationService } from '@app/core/app-token-validation.service';
 import { Observable } from 'rxjs';
 
 @Injectable()

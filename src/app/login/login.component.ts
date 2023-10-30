@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '@app/clients/authentication/authentication.service';
+import { AuthenticationService } from '@app/core/app-authentication.service';
 import { LoginModel } from '@app/models/login.model';
 import { SharedModule } from '@app/shared/shared.module';
 
