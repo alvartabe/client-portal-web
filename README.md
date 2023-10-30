@@ -12,7 +12,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * configuration files and environments 
 * Clean RxJs operations
 * Project file stucture
-*  
 
 ## Development server
 
