@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { UserModel } from './models/user.model';
-import { AuthenticationClient } from './clients/authentication/authentication.client';
-import { TokenModel } from './models/token.model';
+import { UserModel } from '../../models/user.model';
+import { AuthenticationClient } from './authentication.client';
+import { TokenModel } from '../../models/token.model';
 import jwt_decode from 'jwt-decode';
-import { RegisterModel } from './models/register.model';
+import { RegisterModel } from '../../models/register.model';
 import { LoginModel } from '@app/models/login.model';
-import { JWT_TOKEN } from './constants/constants';
+import { JWT_TOKEN } from '../../constants/constants';
 
 @Injectable()
 export class AuthenticationService {

@@ -1,6 +1,18 @@
-# ClientPortal
+# Client Portal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4 (Upgraded to 15.2.10)
+
+## Best Practices implemented here:
+
+* JWT validation and guard protection
+* Feature modules
+* Standalone components
+* Service injection
+* Lazy loading modules and components
+* configuration files and environments 
+* Clean RxJs operations
+* Project file stucture
+*  
 
 ## Development server
 
