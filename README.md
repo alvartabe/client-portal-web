@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4 (Upgraded to 15.2.10)
 
-## Best Practices implemented here:
+## Best Practices
 
 * JWT validation and guard protection
 * Feature modules
