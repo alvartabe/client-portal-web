@@ -8,6 +8,7 @@ import { SharedModule } from '@app/shared/shared.module';
 import { AccountMenuComponent } from './top-content /account-menu/account-menu.component';
 import { BreadcrumbComponent } from './top-content /breadcrumb/breadcrumb.component';
 import { SearchComponent } from './top-content /search/search.component';
+import { DropboxModule } from './dropbox/dropbox.module';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { SearchComponent } from './top-content /search/search.component';
         SharedModule,
         DashboardRoutingModule,
         // feature modules
-        UserModule
+        UserModule,
+        DropboxModule
     ],
     providers: [
         AuthGuard

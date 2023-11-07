@@ -12,6 +12,7 @@ export class NavigationComponent implements OnInit {
     readonly user = 'user';
     readonly dashboard = 'dashboard';
     readonly account = 'account';
+    readonly dropbox = 'dropbox';
 
     constructor(private route: Router) {}
 
@@ -39,7 +40,10 @@ export class NavigationComponent implements OnInit {
     }
 
     private getActiveMenu(): string {
-        if (this.route.url.includes(this.user)) {
+        if (this.route.url.includes(this.dropbox)) {
+            return this.dropbox;
+        }
+        else if (this.route.url.includes(this.user)) {
             return this.user;
         } else if (this.route.url.includes(this.dashboard)) {
             return this.dashboard;

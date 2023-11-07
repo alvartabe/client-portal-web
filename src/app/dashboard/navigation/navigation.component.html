@@ -44,6 +44,29 @@
             </ul>
         </li>
         <li>
+            <a href="javascript:;" class="side-menu" (click)="toggleSubMenu(dropbox)" [ngClass]="{'side-menu--active': activeMenu === dropbox }" >
+                <div class="side-menu__icon">
+                    <app-icon [name]="'file'"></app-icon>
+                </div>
+                <div class="side-menu__title">
+                    Dropbox
+                    <div class="side-menu__sub-icon" [ngClass]="{'rotate-icon': activeSubMenu === dropbox}">
+                        <app-icon [name]="'chevron-down'"></app-icon>
+                    </div>
+                </div>
+            </a>
+            <ul class="sub-menu" [ngClass]="{'open': activeSubMenu === dropbox}">
+                <li>
+                    <a [routerLink]="['/dashboard/dropbox/list']" class="side-menu"  routerLinkActive="side-menu--active">
+                        <div class="side-menu__icon">
+                            <app-icon [name]="'table'"></app-icon>
+                        </div>
+                        <div class="side-menu__title">All files</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
             <a href="javascript:;" class="side-menu" (click)="toggleSubMenu(account)" [ngClass]="{'side-menu--active': activeMenu === account }">
                 <div class="side-menu__icon">
                     <app-icon [name]="'alert-octagon'"></app-icon>

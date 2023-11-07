@@ -16,6 +16,13 @@ const routes: Routes = [
                     breadcrumb: 'Users'
                 },
             },
+            {
+                path: 'dropbox',
+                loadChildren: () => import('./dropbox/dropbox.module').then((m) => m.DropboxModule),
+                data: {
+                    breadcrumb: 'Dropbox'
+                },
+            },
         ],
     },
 ];

@@ -9,6 +9,7 @@ import { AuthenticationClientModule } from './clients/authentication/authenticat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserClientModule } from './clients/user/user.client.module';
 import { AuthHeaderInterceptor } from './core/app-auth-header.interceptor';
+import { DropboxClientModule } from './clients/dropbox/dropbox.client.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthHeaderInterceptor } from './core/app-auth-header.interceptor';
     DashboardModule,
     AuthenticationClientModule,
     UserClientModule,
+    DropboxClientModule,
     BrowserAnimationsModule
   ],
   providers: [
